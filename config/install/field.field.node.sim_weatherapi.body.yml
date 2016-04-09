@@ -1,0 +1,22 @@
+uuid: badedb64-0b60-448b-8128-40c59d4cbc0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.sim_weatherapi
+  module:
+    - text
+id: node.sim_weatherapi.body
+field_name: body
+entity_type: node
+bundle: sim_weatherapi
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

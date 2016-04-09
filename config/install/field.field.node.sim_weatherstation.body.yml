@@ -1,0 +1,22 @@
+uuid: 5b13b084-95a7-4321-aa4e-78aa1fb252aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.sim_weatherstation
+  module:
+    - text
+id: node.sim_weatherstation.body
+field_name: body
+entity_type: node
+bundle: sim_weatherstation
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

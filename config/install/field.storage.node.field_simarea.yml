@@ -1,0 +1,19 @@
+uuid: 76921f1c-9c19-4160-8c07-7f1220adc6bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - geofield
+    - node
+id: node.field_simarea
+field_name: field_simarea
+entity_type: node
+type: geofield
+settings: {  }
+module: geofield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

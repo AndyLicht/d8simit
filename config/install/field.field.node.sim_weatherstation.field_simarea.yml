@@ -1,0 +1,21 @@
+uuid: 17af25b0-a299-4452-8307-07c969775ab2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_simarea
+    - node.type.sim_weatherstation
+  module:
+    - geofield
+id: node.sim_weatherstation.field_simarea
+field_name: field_simarea
+entity_type: node
+bundle: sim_weatherstation
+label: SimArea
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

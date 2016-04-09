@@ -1,0 +1,19 @@
+uuid: 11d0e4da-6b41-4cae-b600-a0299faf07c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - geofield
+    - node
+id: node.field_simpoint
+field_name: field_simpoint
+entity_type: node
+type: geofield
+settings: {  }
+module: geofield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

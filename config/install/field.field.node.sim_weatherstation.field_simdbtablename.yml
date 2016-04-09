@@ -1,0 +1,19 @@
+uuid: ca0d9315-b780-4106-a230-48f5ba23b331
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_simdbtablename
+    - node.type.sim_weatherstation
+id: node.sim_weatherstation.field_simdbtablename
+field_name: field_simdbtablename
+entity_type: node
+bundle: sim_weatherstation
+label: DBTableName
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

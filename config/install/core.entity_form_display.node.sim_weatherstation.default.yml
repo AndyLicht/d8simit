@@ -1,0 +1,135 @@
+uuid: 639bb518-be8b-4d98-bb57-87100b8321e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.sim_weatherstation.body
+    - field.field.node.sim_weatherstation.field_dwdarea
+    - field.field.node.sim_weatherstation.field_dwdfirstentry
+    - field.field.node.sim_weatherstation.field_dwdpoint
+    - field.field.node.sim_weatherstation.field_simarea
+    - field.field.node.sim_weatherstation.field_simdbtablename
+    - field.field.node.sim_weatherstation.field_simdwdid
+    - field.field.node.sim_weatherstation.field_simdwdlastitem
+    - field.field.node.sim_weatherstation.field_simdwdname
+    - field.field.node.sim_weatherstation.field_simpoint
+    - field.field.node.sim_weatherstation.field_simweatherstationid
+    - node.type.sim_weatherstation
+  module:
+    - datetime
+    - geofield
+    - path
+    - text
+id: node.sim_weatherstation.default
+targetEntityType: node
+bundle: sim_weatherstation
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 31
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_dwdarea:
+    weight: 40
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
+    type: geofield_latlon
+  field_dwdfirstentry:
+    weight: 38
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_dwdpoint:
+    weight: 39
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
+    type: geofield_latlon
+  field_simarea:
+    weight: 42
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
+    type: geofield_latlon
+  field_simdbtablename:
+    weight: 33
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_simdwdid:
+    weight: 35
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_simdwdlastitem:
+    weight: 37
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_simdwdname:
+    weight: 34
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_simpoint:
+    weight: 41
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
+    type: geofield_latlon
+  field_simweatherstationid:
+    weight: 32
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

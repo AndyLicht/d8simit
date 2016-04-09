@@ -1,0 +1,19 @@
+uuid: eea731e6-312e-41ae-ba00-0ea0a4034c5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_simdwdid
+    - node.type.sim_weatherstation
+id: node.sim_weatherstation.field_simdwdid
+field_name: field_simdwdid
+entity_type: node
+bundle: sim_weatherstation
+label: DWDID
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

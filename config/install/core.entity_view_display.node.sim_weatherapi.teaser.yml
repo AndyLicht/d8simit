@@ -1,0 +1,30 @@
+uuid: 0ee93150-8e15-4a77-bf00-fbed34f9999e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.sim_weatherapi.body
+    - field.field.node.sim_weatherapi.field_simshortname
+    - field.field.node.sim_weatherapi.field_simurls
+    - node.type.sim_weatherapi
+  module:
+    - text
+    - user
+id: node.sim_weatherapi.teaser
+targetEntityType: node
+bundle: sim_weatherapi
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  field_simshortname: true
+  field_simurls: true

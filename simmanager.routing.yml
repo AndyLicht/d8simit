@@ -1,0 +1,14 @@
+simmanager_forms_settings:
+  path: '/simmanager/settings'
+  defaults:
+    _form: 'Drupal\simmanager\Controller\AdminForm'
+    _title: 'Configure SimManager Settings'
+  requirements:
+    _permission: 'access content'
+simmanager_forms_weatherstation:
+  path: '/simmanager/addweatherstation'
+  defaults:
+    _form: '\Drupal\simmanager\Controller\WeatherstationController'
+    _title: 'Create Weatherstation'
+  requirements:
+    _permission: 'access content'  

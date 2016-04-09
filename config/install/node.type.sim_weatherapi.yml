@@ -1,0 +1,17 @@
+uuid: c04bae41-5f08-4f9d-a800-aa9fe4784095
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: WeatherAPI
+type: sim_weatherapi
+description: ''
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

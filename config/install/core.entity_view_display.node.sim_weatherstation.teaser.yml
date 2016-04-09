@@ -1,0 +1,38 @@
+uuid: c721c96e-8f07-4d1d-8c00-d79a886ae19f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.sim_weatherstation.body
+    - field.field.node.sim_weatherstation.field_dwdfirstentry
+    - field.field.node.sim_weatherstation.field_simdbtablename
+    - field.field.node.sim_weatherstation.field_simdwdid
+    - field.field.node.sim_weatherstation.field_simdwdlastitem
+    - field.field.node.sim_weatherstation.field_simdwdname
+    - field.field.node.sim_weatherstation.field_simweatherstationid
+    - node.type.sim_weatherstation
+  module:
+    - text
+    - user
+id: node.sim_weatherstation.teaser
+targetEntityType: node
+bundle: sim_weatherstation
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  field_dwdfirstentry: true
+  field_simdbtablename: true
+  field_simdwdid: true
+  field_simdwdlastitem: true
+  field_simdwdname: true
+  field_simweatherstationid: true

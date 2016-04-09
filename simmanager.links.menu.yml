@@ -1,0 +1,6 @@
+simmanager.admin:
+  title: 'SimManager Settings'
+  description: 'Base Module for agriculture simulations'
+  parent: system.admin_config_development
+  route_name: simmanager_forms_settings
+  weight: 100

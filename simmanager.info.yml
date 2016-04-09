@@ -1,0 +1,13 @@
+name: SimManager
+description: Base Module for agriculture simulations
+package: Custom
+type: module
+version: 0.2
+core: 8.x
+dependencies:
+    - geophp
+    - geofield
+    - devel
+    - serialization
+    - basic_auth
+    - rest

@@ -1,0 +1,9 @@
+basePath: http://localhost/drupal8/
+weatherapiPath: /rest/simmanager/weatherapisettings
+weathernodePath: rest/filter/weatherstation
+entityNodePOST: entity/node/
+entityNodePATCH: node/
+entityNodeDELETE: node/
+entityNodeGET: node/
+voronoibuild: false
+DWDgetweatherbuild : false

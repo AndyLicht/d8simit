@@ -1,0 +1,24 @@
+uuid: 948c6817-3da7-48c7-aa00-0c3fb633c9c7
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.simmanager
+  module:
+    - system
+  theme:
+    - bartik
+id: simmanager
+theme: bartik
+region: sidebar_first
+weight: -8
+provider: null
+plugin: 'system_menu_block:simmanager'
+settings:
+  id: 'system_menu_block:simmanager'
+  label: SimManager
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

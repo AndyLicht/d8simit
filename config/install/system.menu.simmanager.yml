@@ -1,0 +1,8 @@
+uuid: 4d943818-573f-40be-b354-84615aea5751
+langcode: und
+status: true
+dependencies: {  }
+id: simmanager
+label: SimManager
+description: ''
+locked: false

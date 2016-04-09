@@ -1,0 +1,19 @@
+uuid: 8c90d0d1-f3b8-4363-8900-dd5ef3593d9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_simweatherstationid
+    - node.type.sim_weatherstation
+id: node.sim_weatherstation.field_simweatherstationid
+field_name: field_simweatherstationid
+entity_type: node
+bundle: sim_weatherstation
+label: WeatherStationID
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
