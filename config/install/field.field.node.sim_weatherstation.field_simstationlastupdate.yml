@@ -1,17 +1,17 @@
-uuid: 450f07a4-e7c1-4b2b-9500-f80d59ffbedf
+uuid: 3a41de3a-8fe2-4df5-940a-69a723b23d1d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_simdwdlastitem
+    - field.storage.node.field_simstationlastupdate
     - node.type.sim_weatherstation
   module:
     - datetime
-id: node.sim_weatherstation.field_simdwdlastitem
-field_name: field_simdwdlastitem
+id: node.sim_weatherstation.field_simstationlastupdate
+field_name: field_simstationlastupdate
 entity_type: node
 bundle: sim_weatherstation
-label: DWDLastEntry
+label: lastUpdate
 description: ''
 required: false
 translatable: false

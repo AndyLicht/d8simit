@@ -1,4 +1,4 @@
-basePath: http://localhost/drupal8/
+basePath: 'http://localhost/drupal8/'
 weatherapiPath: /rest/simmanager/weatherapisettings
 weathernodePath: rest/filter/weatherstation
 entityNodePOST: entity/node/
@@ -6,4 +6,6 @@ entityNodePATCH: node/
 entityNodeDELETE: node/
 entityNodeGET: node/
 voronoibuild: false
-DWDgetweatherbuild : false
+DWDgetweatherbuild: false
+_core:
+  default_config_hash: GVVEDZB-5TExQ968D_aaXWoC7_OpzvTiYEZ3hC-6UJE

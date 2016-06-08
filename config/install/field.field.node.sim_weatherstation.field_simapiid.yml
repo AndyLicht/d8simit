@@ -1,15 +1,15 @@
-uuid: 9364116e-b5df-40d6-8300-b07c502bae19
+uuid: a143f028-9f20-4b91-9f9a-e053b374410e
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_simdwdname
+    - field.storage.node.field_simapiid
     - node.type.sim_weatherstation
-id: node.sim_weatherstation.field_simdwdname
-field_name: field_simdwdname
+id: node.sim_weatherstation.field_simapiid
+field_name: field_simapiid
 entity_type: node
 bundle: sim_weatherstation
-label: DWDName
+label: apiID
 description: ''
 required: false
 translatable: false

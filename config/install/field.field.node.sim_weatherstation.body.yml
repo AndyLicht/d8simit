@@ -7,6 +7,8 @@ dependencies:
     - node.type.sim_weatherstation
   module:
     - text
+_core:
+  default_config_hash: Lg0Zyx7Nh3P06tjE2kHlbMsPUnPW2g2Sbw7jriZU9rI
 id: node.sim_weatherstation.body
 field_name: body
 entity_type: node

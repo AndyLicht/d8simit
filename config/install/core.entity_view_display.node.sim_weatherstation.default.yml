@@ -4,22 +4,22 @@ status: true
 dependencies:
   config:
     - field.field.node.sim_weatherstation.body
-    - field.field.node.sim_weatherstation.field_dwdarea
-    - field.field.node.sim_weatherstation.field_dwdfirstentry
-    - field.field.node.sim_weatherstation.field_dwdpoint
+    - field.field.node.sim_weatherstation.field_simapiid
     - field.field.node.sim_weatherstation.field_simarea
     - field.field.node.sim_weatherstation.field_simdbtablename
-    - field.field.node.sim_weatherstation.field_simdwdid
-    - field.field.node.sim_weatherstation.field_simdwdlastitem
-    - field.field.node.sim_weatherstation.field_simdwdname
+    - field.field.node.sim_weatherstation.field_simfirstentry
     - field.field.node.sim_weatherstation.field_simpoint
+    - field.field.node.sim_weatherstation.field_simstationlastupdate
     - field.field.node.sim_weatherstation.field_simweatherstationid
+    - field.field.node.sim_weatherstation.field_weatherapi
     - node.type.sim_weatherstation
   module:
     - datetime
     - geofield
     - text
     - user
+_core:
+  default_config_hash: _M7MrL8a_fyT2ZDs-C5Uzb-VbuzbuKrI6zvLZ9_jdJs
 id: node.sim_weatherstation.default
 targetEntityType: node
 bundle: sim_weatherstation
@@ -31,28 +31,13 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
-  field_dwdarea:
-    weight: 110
+  field_simapiid:
+    weight: 115
     label: above
     settings:
-      output_format: wkt
+      link_to_entity: false
     third_party_settings: {  }
-    type: geofield_default
-  field_dwdfirstentry:
-    weight: 108
-    label: above
-    settings:
-      format_type: medium
-      timezone_override: ''
-    third_party_settings: {  }
-    type: datetime_default
-  field_dwdpoint:
-    weight: 109
-    label: above
-    settings:
-      output_format: wkt
-    third_party_settings: {  }
-    type: geofield_default
+    type: string
   field_simarea:
     weight: 112
     label: above
@@ -67,28 +52,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_simdwdid:
-    weight: 105
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_simdwdlastitem:
-    weight: 107
+  field_simfirstentry:
+    weight: 114
     label: above
     settings:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
-  field_simdwdname:
-    weight: 104
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
   field_simpoint:
     weight: 111
     label: above
@@ -96,6 +67,14 @@ content:
       output_format: wkt
     third_party_settings: {  }
     type: geofield_default
+  field_simstationlastupdate:
+    weight: 113
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
   field_simweatherstationid:
     weight: 102
     label: above
@@ -103,6 +82,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_weatherapi:
+    weight: 116
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   links:
     weight: 100
 hidden: {  }

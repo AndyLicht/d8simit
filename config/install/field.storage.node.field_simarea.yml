@@ -5,6 +5,8 @@ dependencies:
   module:
     - geofield
     - node
+_core:
+  default_config_hash: glQ6R1oCzMEpdglHGdhPaGKCLB7E6qgp3qm01p9Zkcs
 id: node.field_simarea
 field_name: field_simarea
 entity_type: node

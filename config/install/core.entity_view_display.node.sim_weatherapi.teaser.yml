@@ -11,6 +11,8 @@ dependencies:
   module:
     - text
     - user
+_core:
+  default_config_hash: pjoIoxDexntkqIzbxSDeJb5ftXWwEg0EBaP-FI8FMfY
 id: node.sim_weatherapi.teaser
 targetEntityType: node
 bundle: sim_weatherapi

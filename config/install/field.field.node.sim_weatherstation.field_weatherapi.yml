@@ -1,0 +1,28 @@
+uuid: 290f635a-fc22-49ae-b9a2-0bf2ac9b4527
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weatherapi
+    - node.type.sim_weatherapi
+    - node.type.sim_weatherstation
+id: node.sim_weatherstation.field_weatherapi
+field_name: field_weatherapi
+entity_type: node
+bundle: sim_weatherstation
+label: WeatherAPI
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      sim_weatherapi: sim_weatherapi
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

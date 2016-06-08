@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - node.type.sim_weatherstation
+_core:
+  default_config_hash: 1Yq3daZVFaE8o9XCMGrFAsjRA9W6sPct2GEg7boYv8M
 id: node.sim_weatherstation.promote
 field_name: promote
 entity_type: node

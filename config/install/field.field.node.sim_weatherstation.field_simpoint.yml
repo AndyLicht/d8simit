@@ -7,6 +7,8 @@ dependencies:
     - node.type.sim_weatherstation
   module:
     - geofield
+_core:
+  default_config_hash: DBgbnnfRv46Cz121_PpKbmZA0y0efWjn67chbwaF7Gg
 id: node.sim_weatherstation.field_simpoint
 field_name: field_simpoint
 entity_type: node

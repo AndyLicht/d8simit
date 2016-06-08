@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - node
+_core:
+  default_config_hash: hIX2zFkYy2ZQbnpbsGSBUni8-rgi_Z54F0fxu45CU0c
 id: node.field_simdbtablename
 field_name: field_simdbtablename
 entity_type: node

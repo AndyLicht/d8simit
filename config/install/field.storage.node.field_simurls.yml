@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - node
+_core:
+  default_config_hash: LZZSj72YqzXZI3Ppb8RlFsNc1BD7vcemrS3kn9GKGJo
 id: node.field_simurls
 field_name: field_simurls
 entity_type: node

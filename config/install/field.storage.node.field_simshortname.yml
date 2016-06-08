@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - node
+_core:
+  default_config_hash: 3VieqSfv7sBHfEfEe0Rwbp2W-XmzyuSMpLfrWUKWB-Y
 id: node.field_simshortname
 field_name: field_simshortname
 entity_type: node

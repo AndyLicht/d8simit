@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - node
+_core:
+  default_config_hash: 94n3G45NzMtdQfWi_wtuB7KpBwpgGPIbYHHBwtw2JfE
 id: node.field_simweatherstationid
 field_name: field_simweatherstationid
 entity_type: node

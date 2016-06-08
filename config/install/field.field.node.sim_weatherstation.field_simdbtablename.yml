@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_simdbtablename
     - node.type.sim_weatherstation
+_core:
+  default_config_hash: _p94uK7OvjkTmVIqaRXlMUhZMmUIE1YV_O1uDKOx8wE
 id: node.sim_weatherstation.field_simdbtablename
 field_name: field_simdbtablename
 entity_type: node

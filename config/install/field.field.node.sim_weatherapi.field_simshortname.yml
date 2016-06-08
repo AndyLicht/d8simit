@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_simshortname
     - node.type.sim_weatherapi
+_core:
+  default_config_hash: _7JDaKx7JipQ2Qb_YzTOpHzfbLphz_JIU1n2gZ_24HE
 id: node.sim_weatherapi.field_simshortname
 field_name: field_simshortname
 entity_type: node

@@ -5,16 +5,16 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.sim_weatherstation.body
-    - field.field.node.sim_weatherstation.field_dwdfirstentry
+    - field.field.node.sim_weatherstation.field_simarea
     - field.field.node.sim_weatherstation.field_simdbtablename
-    - field.field.node.sim_weatherstation.field_simdwdid
-    - field.field.node.sim_weatherstation.field_simdwdlastitem
-    - field.field.node.sim_weatherstation.field_simdwdname
+    - field.field.node.sim_weatherstation.field_simpoint
     - field.field.node.sim_weatherstation.field_simweatherstationid
     - node.type.sim_weatherstation
   module:
     - text
     - user
+_core:
+  default_config_hash: oJoxxA1CCxTw_MI1koFkjHwmeZcPzswM-GoFYh9bKK0
 id: node.sim_weatherstation.teaser
 targetEntityType: node
 bundle: sim_weatherstation
@@ -30,9 +30,7 @@ content:
   links:
     weight: 100
 hidden:
-  field_dwdfirstentry: true
+  field_simarea: true
   field_simdbtablename: true
-  field_simdwdid: true
-  field_simdwdlastitem: true
-  field_simdwdname: true
+  field_simpoint: true
   field_simweatherstationid: true

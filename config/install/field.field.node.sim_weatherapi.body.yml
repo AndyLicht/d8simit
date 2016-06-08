@@ -7,6 +7,8 @@ dependencies:
     - node.type.sim_weatherapi
   module:
     - text
+_core:
+  default_config_hash: OxJE8n2rOiLhGisZUNoX1Lqre3gQ3ZTnUGOZDqgL8Yg
 id: node.sim_weatherapi.body
 field_name: body
 entity_type: node

@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_simweatherstationid
     - node.type.sim_weatherstation
+_core:
+  default_config_hash: xXJOCjVa10OBljY1WzUEg3F48UYl1g4vgLZmcGMSAwY
 id: node.sim_weatherstation.field_simweatherstationid
 field_name: field_simweatherstationid
 entity_type: node

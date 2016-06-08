@@ -10,6 +10,8 @@ dependencies:
   module:
     - path
     - text
+_core:
+  default_config_hash: 2rAR7Z1Qjqv9PT5dE3fBBR6-woHkBC7nhgG9PKQcF4k
 id: node.sim_weatherapi.default
 targetEntityType: node
 bundle: sim_weatherapi

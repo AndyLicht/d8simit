@@ -2,6 +2,8 @@ uuid: 4d943818-573f-40be-b354-84615aea5751
 langcode: und
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: oMflyXKaxKhqyoBNa9wmqYKnA5T4TYSGHBMCERbcPl8
 id: simmanager
 label: SimManager
 description: ''

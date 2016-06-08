@@ -8,6 +8,8 @@ dependencies:
     - system
   theme:
     - bartik
+_core:
+  default_config_hash: _MPwxxKtzrn3HJTI7Vdq52UDm7v6R-o4OnL_WLNl50M
 id: simmanager
 theme: bartik
 region: sidebar_first

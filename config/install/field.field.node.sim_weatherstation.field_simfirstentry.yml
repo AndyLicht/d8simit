@@ -1,17 +1,17 @@
-uuid: b5cd41cc-8911-4cee-b600-a88fb99ceaa6
+uuid: be0b31d3-1af9-4dee-8c7e-6d8edc156995
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_dwdfirstentry
+    - field.storage.node.field_simfirstentry
     - node.type.sim_weatherstation
   module:
     - datetime
-id: node.sim_weatherstation.field_dwdfirstentry
-field_name: field_dwdfirstentry
+id: node.sim_weatherstation.field_simfirstentry
+field_name: field_simfirstentry
 entity_type: node
 bundle: sim_weatherstation
-label: DWDFirstEntry
+label: firstEntry
 description: ''
 required: false
 translatable: false

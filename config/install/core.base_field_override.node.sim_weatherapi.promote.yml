@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - node.type.sim_weatherapi
+_core:
+  default_config_hash: y5dNnOM6DSphq-NqXNyIZL2ev5rymEYu8dUwmYlnkss
 id: node.sim_weatherapi.promote
 field_name: promote
 entity_type: node

@@ -1,17 +1,18 @@
-uuid: d1d8735d-0b8f-46e2-b200-d58f0307b3b6
+uuid: f0f97279-c56b-4374-af52-d851f32d8962
 langcode: en
 status: true
 dependencies:
   module:
-    - datetime
     - node
-id: node.field_simdwdlastitem
-field_name: field_simdwdlastitem
+id: node.field_simapiid
+field_name: field_simapiid
 entity_type: node
-type: datetime
+type: string
 settings:
-  datetime_type: datetime
-module: datetime
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
 locked: false
 cardinality: 1
 translatable: true

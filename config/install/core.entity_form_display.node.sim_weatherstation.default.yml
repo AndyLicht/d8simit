@@ -4,22 +4,22 @@ status: true
 dependencies:
   config:
     - field.field.node.sim_weatherstation.body
-    - field.field.node.sim_weatherstation.field_dwdarea
-    - field.field.node.sim_weatherstation.field_dwdfirstentry
-    - field.field.node.sim_weatherstation.field_dwdpoint
+    - field.field.node.sim_weatherstation.field_simapiid
     - field.field.node.sim_weatherstation.field_simarea
     - field.field.node.sim_weatherstation.field_simdbtablename
-    - field.field.node.sim_weatherstation.field_simdwdid
-    - field.field.node.sim_weatherstation.field_simdwdlastitem
-    - field.field.node.sim_weatherstation.field_simdwdname
+    - field.field.node.sim_weatherstation.field_simfirstentry
     - field.field.node.sim_weatherstation.field_simpoint
+    - field.field.node.sim_weatherstation.field_simstationlastupdate
     - field.field.node.sim_weatherstation.field_simweatherstationid
+    - field.field.node.sim_weatherstation.field_weatherapi
     - node.type.sim_weatherstation
   module:
     - datetime
     - geofield
     - path
     - text
+_core:
+  default_config_hash: OqqbkO81MQDaSVR4etGS6B-v_TBMZml4bssARc8G6e8
 id: node.sim_weatherstation.default
 targetEntityType: node
 bundle: sim_weatherstation
@@ -38,23 +38,13 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
-  field_dwdarea:
-    weight: 40
+  field_simapiid:
+    weight: 45
     settings:
-      html5_geolocation: false
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: geofield_latlon
-  field_dwdfirstentry:
-    weight: 38
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
-  field_dwdpoint:
-    weight: 39
-    settings:
-      html5_geolocation: false
-    third_party_settings: {  }
-    type: geofield_latlon
+    type: string_textfield
   field_simarea:
     weight: 42
     settings:
@@ -68,31 +58,22 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_simdwdid:
-    weight: 35
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-  field_simdwdlastitem:
-    weight: 37
+  field_simfirstentry:
+    weight: 44
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
-  field_simdwdname:
-    weight: 34
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
   field_simpoint:
     weight: 41
     settings:
       html5_geolocation: false
     third_party_settings: {  }
     type: geofield_latlon
+  field_simstationlastupdate:
+    weight: 43
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
   field_simweatherstationid:
     weight: 32
     settings:
@@ -100,6 +81,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_weatherapi:
+    weight: 46
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   path:
     type: path
     weight: 30

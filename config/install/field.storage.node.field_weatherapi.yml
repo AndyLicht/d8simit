@@ -1,16 +1,16 @@
-uuid: 9f5fa3e9-05ff-4738-bf00-dc2ce98b1900
+uuid: 4583102b-e1ab-4402-a5e6-30eca922c2ae
 langcode: en
 status: true
 dependencies:
   module:
-    - geofield
     - node
-id: node.field_dwdpoint
-field_name: field_dwdpoint
+id: node.field_weatherapi
+field_name: field_weatherapi
 entity_type: node
-type: geofield
-settings: {  }
-module: geofield
+type: entity_reference
+settings:
+  target_type: node
+module: core
 locked: false
 cardinality: 1
 translatable: true
