@@ -12,8 +12,9 @@ class WeatherstationController extends FormBase
     protected $description = "";
     protected $x;
     protected $y;
-    protected $dwdname;
-    protected $dwdid;
+    protected $apiname;
+    protected $apiid;
+    protected $api;
     public $config ;
     protected $table = [
         'fields' => [
@@ -44,8 +45,6 @@ class WeatherstationController extends FormBase
         //$form = parent::buildForm($form, $form_state);
         $this->config = \Drupal::config('simmanager.settings');
         
-        dsm($this->step);
-        
         if($this->step == 1) 
         {
             $query = \Drupal::entityQuery('node')
@@ -57,7 +56,7 @@ class WeatherstationController extends FormBase
             foreach($nids as $nid)
             {
                 $node = node_load($nid);
-                $available_weatherstations[$node->getTitle()] = t($node->getTitle());
+                $available_weatherstations[$nid] = t($node->getTitle());
             }
             //Forms
             //Title
@@ -72,8 +71,8 @@ class WeatherstationController extends FormBase
                 '#required' =>TRUE,
                 '#title' => t('Description'),
             );
-            $form['weaterstationapi'] = array(
-                '#type' => 'checkboxes',
+            $form['weatherstationapi'] = array(
+                '#type' => 'radios',
                 '#options' => $available_weatherstations,
                 '#required' =>TRUE,
                 '#title' => t('What type of weatherstation you will add?'),
@@ -82,42 +81,35 @@ class WeatherstationController extends FormBase
         
         if($this->step == 2) 
         {
-            dsm('Drinnen');
             $form = [];
-            foreach ($form_state->getValue('weaterstationapi') as $key => $value)
-            {
-                if($value == 'Deutscher Wetterdienst FTP')
-                {
-                    $form['dwd'] = [
-                        '#markup' => 'DWD Setup',
-                    ];
-                    $form['form_simdwdname'] = [
-                        '#type' => 'textfield',
-                        '#required' =>TRUE,
-                        '#title' => t('DWD Name'),
-                    ];
-                    $form['form_simdwdid'] = [
-                        '#type' => 'textfield',
-                        '#required' =>TRUE,
-                        '#title' => t('DWD ID'),
-                    ];
-                    $form['form_simdwdxcoor'] = [
-                        '#type' => 'textfield',
-                        '#required' =>TRUE,
-                        '#title' => t('DWD Longitude'),
-                    ];
-                    $form['form_simdwdycoor'] = [
-                        '#type' => 'textfield',
-                        '#required' =>TRUE,
-                        '#title' => t('DWD Latitude'),
-                    ];
-                }
-            }
+            $form['api'] = [
+                '#markup' => 'API Setup',
+            ];
+            $form['form_simname'] = [
+                '#type' => 'textfield',
+                '#required' =>TRUE,
+                '#title' => t('API Name'),
+            ];
+            $form['form_simid'] = [
+                '#type' => 'textfield',
+                '#required' =>TRUE,
+                '#title' => t('API ID'),
+            ];
+            $form['form_simxcoor'] = [
+                '#type' => 'textfield',
+                '#required' =>TRUE,
+                '#title' => t('API Longitude'),
+            ];
+            $form['form_simycoor'] = [
+                '#type' => 'textfield',
+                '#required' =>TRUE,
+                '#title' => t('API Latitude'),
+            ];
         }
         //Preview
         if($this->step == 3) 
         {
-            $form['dwd'] = [
+            $form['api'] = [
                 '#markup' => 'Preview',
             ];
         }
@@ -149,30 +141,32 @@ class WeatherstationController extends FormBase
         {
             $this->name = $form_state->getValue('title');
             $this->description = $form_state->getValue('description');
+            $this->api = $form_state->getValue('weatherstationapi');
             $form_state->setRebuild();
             $this->step++;
         }
         elseif($this->step == 2) 
         {
-            $this->dwdname = $form_state->getValue('form_simdwdname');
-            $this->dwdid = $form_state->getValue('form_simdwdid');
-            $this->x = $form_state->getValue('form_simdwdxcoor');
-            $this->y = $form_state->getValue('form_simdwdycoor');
+            $this->apiname = $form_state->getValue('form_simname');
+            $this->apiid = $form_state->getValue('form_simid');
+            $this->x = $form_state->getValue('form_simxcoor');
+            $this->y = $form_state->getValue('form_simycoor');
             $form_state->setRebuild();
             $this->step++;
         }
         elseif($this->step == 3)
         {
+            
             $new_weatherstation_values = array();
             $new_weatherstation_values['type'] = 'sim_weatherstation';
             $new_weatherstation_values['title'] = $this->name;
             $new_weatherstation_values['body'] = $this->description;
-           
-            $new_weatherstation_values['field_simdwdid'] = $this->dwdid;
-            $new_weatherstation_values['field_simdwdname'] = $this->dwdname;
+            $new_weatherstation_values['field_simapiid'] = $this->apiid;
+            $new_weatherstation_values['field_simapiname'] = $this->apiname;
             $new_weatherstation_values['field_simweatherstationid'] = uniqid();
             $new_weatherstation_values['field_simdbtablename'] = 'sim_'.$new_weatherstation_values['field_simweatherstationid'];
-            $new_weatherstation_values['field_dwdpoint'] = 'POINT ('.$this->x.' '.$this->y.')';
+            $new_weatherstation_values['field_simpoint'] = 'POINT ('.$this->x.' '.$this->y.')';
+            $new_weatherstation_values['field_weatherapi'] = $this->api;
             $new_weatherstation = entity_create('node', $new_weatherstation_values);
             $new_weatherstation->save();
             db_create_table($new_weatherstation_values['field_simdbtablename'],$this->table);
