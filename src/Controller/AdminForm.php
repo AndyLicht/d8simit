@@ -41,6 +41,7 @@ class AdminForm extends ConfigFormBase
             '#title' => t('Drupal Base Path of WeatherAPI'),
         );
         
+        
         $form['rest'] = array(
             '#type' => 'fieldset',
             '#title' => t('REST Settings'),
@@ -48,37 +49,37 @@ class AdminForm extends ConfigFormBase
         );
         $form['rest']['weathernodePath'] = array(
             '#type' => 'textfield',
-            '#value' => $config->get('weathernodePath'),
+            '#default_value' => $config->get('weathernodePath'),
             '#required' =>TRUE,
             '#title' => t('Path of the weathernodes'),
         );
         $form['rest']['weatherapiPath']= array(
             '#type' => 'textfield',
-            '#value' => $config->get('weatherapiPath'),
+            '#default_value' => $config->get('weatherapiPath'),
             '#required' =>TRUE,
             '#title' => t('Drupal Base Path of WeatherAPI'),
         );
         $form['rest']['entityNodePOST'] = array(
             '#type' => 'textfield',
-            '#value' => $config->get('entityNodePOST'),
+            '#default_value' => $config->get('entityNodePOST'),
             '#required' =>TRUE,
             '#title' => t('Drupal Base Path of POST'),
         );
         $form['rest']['entityNodePATCH'] = array(
             '#type' => 'textfield',
-            '#value' => $config->get('entityNodePATCH'),
+            '#default_value' => $config->get('entityNodePATCH'),
             '#required' =>TRUE,
             '#title' => t('Drupal Base Path of PATCH'),
         );
         $form['rest']['entityNodeDELETE'] = array(
             '#type' => 'textfield',
-            '#value' => $config->get('entityNodeDELETE'),
+            '#default_value' => $config->get('entityNodeDELETE'),
             '#required' =>TRUE,
             '#title' => t('Drupal Base Path of DELETE'),
         );
         $form['rest']['entityNodeGET'] = array(
             '#type' => 'textfield',
-            '#value' => $config->get('entityNodeGET'),
+            '#default_value' => $config->get('entityNodeGET'),
             '#required' =>TRUE,
             '#title' => t('Drupal Base Path of GET'),
         );
@@ -129,7 +130,6 @@ class AdminForm extends ConfigFormBase
 
     public function getDWDWeather()
     {
-        dsm('get Weather');
         $config = $this->config('simmanager.settings');
         $config->set('DWDgetweatherbuild',TRUE)
                 ->save();
@@ -145,7 +145,6 @@ class AdminForm extends ConfigFormBase
     
     public function submitForm(array &$form, FormStateInterface $form_state)
     {   
-        //$config = \Drupal::service('config.factory')->getEditable('simmanager.settings')
         $config = $this->config('simmanager.settings')
             ->set('basePath',$form_state->getValue('basePath'))
             ->set('weathernodePath',$form_state->getValue('weathernodePath'))
