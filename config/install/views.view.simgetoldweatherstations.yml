@@ -482,7 +482,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: getoldweatherstations
+      path: simmanager/getoldweatherstations
       pager:
         type: some
         options:

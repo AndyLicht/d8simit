@@ -10,18 +10,19 @@ use Drupal\Core\Form\FormStateInterface;
 class AdminForm extends ConfigFormBase 
 {
     protected $table = [
-        'fields' => [
-                'timestamp' =>['pgsql_type' => 'timestamp with time zone', 'not null' => TRUE],
-                'temp' => ['type' => 'float', 'unsigned' => FALSE, 'not null' => FALSE],
-                'rain' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
-                'snow' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
-                'pressure' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
-                'humidity' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
-                'windspeed' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
-                'winddirection' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
-                'api' => ['type' => 'text', 'not null' => TRUE],
-                'forecast' => ['pgsql_type' => 'boolean', 'not null' => TRUE,'default' => '0'],
-               ],
+        'fields' => 
+        [
+            'timestamp' =>['pgsql_type' => 'timestamp with time zone', 'not null' => TRUE],
+            'temp' => ['type' => 'float', 'unsigned' => FALSE, 'not null' => FALSE],
+            'rain' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+            'snow' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+            'pressure' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+            'humidity' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+            'windspeed' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+            'winddirection' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+            'api' => ['type' => 'text', 'not null' => TRUE],
+            'forecast' => ['pgsql_type' => 'boolean', 'not null' => TRUE,'default' => '0'],
+        ],
     ];
     
     
@@ -58,7 +59,6 @@ class AdminForm extends ConfigFormBase
             '#required' =>TRUE,
             '#title' => t('Drupal Base Path of WeatherAPI'),
         );
-        
         
         $form['rest'] = array(
             '#type' => 'fieldset',
@@ -168,29 +168,48 @@ class AdminForm extends ConfigFormBase
     {
         $string = file_get_contents(getcwd().'/modules/custom/d8simit/dwdstations.txt');
         $string_ = explode("\n",$string);
-        for($i = 2; $i < sizeof($string_); $i++)
+        $nids = \Drupal::entityQuery('node')
+                ->condition('field_simshortname', 'dwd', '=')
+                ->execute();
+        $apiid;
+        if(sizeof($nids) === 1)
         {
-            $weatherstation = array(
-                "id"  => str_replace(" ","",substr($string_[$i],0,11)),
-                "x" => str_replace(" ","",substr($string_[$i],47,10)),
-                "y" => str_replace(" ","",substr($string_[$i],57,10)),
-                "title" => trim(substr($string_[$i],67,40)),
-                "body" => str_replace(" ","",substr($string_[$i],108))
-            );
-            $new_weatherstation_values = array();
-            $new_weatherstation_values['type'] = 'sim_weatherstation';
-            $new_weatherstation_values['title'] = $weatherstation['title'];
-            $new_weatherstation_values['body'] = $weatherstation['body'];
-            $new_weatherstation_values['field_simapiid'] = $weatherstation['id'];
-            $new_weatherstation_values['field_simapiname'] = 'dwd';
-            $new_weatherstation_values['field_simweatherstationid'] = uniqid();
-            $new_weatherstation_values['field_simdbtablename'] = 'sim_'.$new_weatherstation_values['field_simweatherstationid'];
-            $new_weatherstation_values['field_simpoint'] = 'POINT ('.$weatherstation['x'].' '.$weatherstation['y'].')';
-            $new_weatherstation_values['field_weatherapi'] = $this->api;
-            $new_weatherstation = entity_create('node', $new_weatherstation_values);
-            $new_weatherstation->save();
-            db_create_table($new_weatherstation_values['field_simdbtablename'],$this->table);
+            foreach($nids as $key => $value)
+            {
+                $apiid = $value;
+            }
         }
+        else
+        {
+            drupal_set_message('at first install dwd api');
+            
+        }
+        if(isset($apiid))
+        {    
+            for($i = 2; $i < sizeof($string_); $i++)
+            {
+                $weatherstation = array(
+                    "id"  => str_replace(" ","",substr($string_[$i],0,11)),
+                    "x" => str_replace(" ","",substr($string_[$i],47,10)),
+                    "y" => str_replace(" ","",substr($string_[$i],57,10)),
+                    "title" => trim(substr($string_[$i],67,40)),
+                    "body" => str_replace(" ","",substr($string_[$i],108))
+                );
+                $new_weatherstation_values = array();
+                $new_weatherstation_values['type'] = 'sim_weatherstation';
+                $new_weatherstation_values['title'] = $weatherstation['title'];
+                $new_weatherstation_values['body'] = $weatherstation['body'];
+                $new_weatherstation_values['field_simapiid'] = $weatherstation['id'];
+                $new_weatherstation_values['field_simapiname'] = 'dwd';
+                $new_weatherstation_values['field_simweatherstationid'] = uniqid();
+                $new_weatherstation_values['field_simdbtablename'] = 'sim_'.$new_weatherstation_values['field_simweatherstationid'];
+                $new_weatherstation_values['field_simpoint'] = 'POINT ('.$weatherstation['x'].' '.$weatherstation['y'].')';
+                $new_weatherstation_values['field_weatherapi'] = $apiid;
+                $new_weatherstation = entity_create('node', $new_weatherstation_values);
+                $new_weatherstation->save();
+                db_create_table($new_weatherstation_values['field_simdbtablename'],$this->table);
+            }
+        }    
     }
     
     public function createLinks()

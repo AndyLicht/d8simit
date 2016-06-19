@@ -379,7 +379,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: getallweatherapis
+      path: simmanager/getallweatherapis
       pager:
         type: some
         options:
