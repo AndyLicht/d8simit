@@ -2,12 +2,30 @@
  
 namespace Drupal\simmanager\Controller;
 
+use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
  
 class AdminForm extends ConfigFormBase 
 {
+    protected $table = [
+        'fields' => [
+                'timestamp' =>['pgsql_type' => 'timestamp with time zone', 'not null' => TRUE],
+                'temp' => ['type' => 'float', 'unsigned' => FALSE, 'not null' => FALSE],
+                'rain' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+                'snow' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+                'pressure' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+                'humidity' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+                'windspeed' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+                'winddirection' => ['type' => 'float', 'unsigned' => TRUE, 'not null' => FALSE],
+                'api' => ['type' => 'text', 'not null' => TRUE],
+                'forecast' => ['pgsql_type' => 'boolean', 'not null' => TRUE,'default' => '0'],
+               ],
+    ];
+    
+    
+    
     
     public function getFormId() 
     {
@@ -117,6 +135,7 @@ class AdminForm extends ConfigFormBase
                 '#value' => t('build DWD API'),
             ); 
         }
+        
         if($config->get('DWDgetweatherbuild') == FALSE)
         {
             $form['control']['dwdcontrol'] = array(
@@ -125,27 +144,93 @@ class AdminForm extends ConfigFormBase
                 '#submit' => array('::getDWDWeather'),
             );
         }
+        if($config->get('simlinks') == FALSE)
+        {
+            $form['control']['simlinks'] = array(
+                '#type' => 'submit',
+                '#value' => t('create links for Settings'),
+                '#submit' => array('::createLinks'),
+            );
+        }
+        if($config->get('simdwdstations') == FALSE)
+        {
+            $form['control']['simdwdstations'] = array(
+                '#type' => 'submit',
+                '#value' => t('create DWD Stations'),
+                '#submit' => array('::createDWDStations'),
+            );
+        }
         return parent::buildForm($form, $form_state);
     }
+    
+    
+    public function createDWDStations()
+    {
+        $string = file_get_contents(getcwd().'/modules/custom/d8simit/dwdstations.txt');
+        $string_ = explode("\n",$string);
+        for($i = 2; $i < sizeof($string_); $i++)
+        {
+            $weatherstation = array(
+                "id"  => str_replace(" ","",substr($string_[$i],0,11)),
+                "x" => str_replace(" ","",substr($string_[$i],47,10)),
+                "y" => str_replace(" ","",substr($string_[$i],57,10)),
+                "title" => trim(substr($string_[$i],67,40)),
+                "body" => str_replace(" ","",substr($string_[$i],108))
+            );
+            $new_weatherstation_values = array();
+            $new_weatherstation_values['type'] = 'sim_weatherstation';
+            $new_weatherstation_values['title'] = $weatherstation['title'];
+            $new_weatherstation_values['body'] = $weatherstation['body'];
+            $new_weatherstation_values['field_simapiid'] = $weatherstation['id'];
+            $new_weatherstation_values['field_simapiname'] = 'dwd';
+            $new_weatherstation_values['field_simweatherstationid'] = uniqid();
+            $new_weatherstation_values['field_simdbtablename'] = 'sim_'.$new_weatherstation_values['field_simweatherstationid'];
+            $new_weatherstation_values['field_simpoint'] = 'POINT ('.$weatherstation['x'].' '.$weatherstation['y'].')';
+            $new_weatherstation_values['field_weatherapi'] = $this->api;
+            $new_weatherstation = entity_create('node', $new_weatherstation_values);
+            $new_weatherstation->save();
+            db_create_table($new_weatherstation_values['field_simdbtablename'],$this->table);
+        }
+    }
+    
+    public function createLinks()
+    {
+        MenuLinkContent::create([
+            'title' => 'AddWeatherstation',
+            'link' => ['uri' => 'internal:/simmanager/addweatherstation'],
+            'menu_name' => 'simmanager',
+        ])->save();
 
+
+        MenuLinkContent::create([
+            'title' => 'SimManager Settings',
+            'link' => ['uri' => 'internal:/simmanager/settings'],
+            'menu_name' => 'simmanager',
+        ])->save();
+        
+        $this->config('simmanager.settings')
+            ->set('simlinks',TRUE)
+            ->save();
+    }
+    
     public function getDWDWeather()
     {
-        $config = $this->config('simmanager.settings');
-        $config->set('DWDgetweatherbuild',TRUE)
-                ->save();
+        $this->config('simmanager.settings')
+            ->set('DWDgetweatherbuild',TRUE)
+            ->save();
     }
     
     public function voronoi_start()
     {
-        $config = $this->config('simmanager.settings');
-        $config->set('voronoibuild',TRUE)
-                ->save();
+        $this->config('simmanager.settings')
+            ->set('voronoibuild',TRUE)
+            ->save();
         exec("java -jar C:\Users\Tim\Documents\NetBeansProjects\weatherManager\dist\weatherManager.jar voronoi", $output);
     }
     
     public function submitForm(array &$form, FormStateInterface $form_state)
     {   
-        $config = $this->config('simmanager.settings')
+        $this->config('simmanager.settings')
             ->set('basePath',$form_state->getValue('basePath'))
             ->set('weathernodePath',$form_state->getValue('weathernodePath'))
             ->set('weatherapiPath',$form_state->getValue('weatherapiPath'))
